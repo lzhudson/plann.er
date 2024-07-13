@@ -1,19 +1,35 @@
 import { User, X } from "lucide-react"
 import { FormEvent } from "react"
 import { Button } from "../../components/button"
+import { DateRange } from "react-day-picker"
+import { format } from "date-fns"
+import { ptBR } from "date-fns/locale"
 
 interface ConfirmTripModalProps {
   closeConfirmTripModal: () => void
   setOwnerName: (name: string) => void
   setOwnerEmail: (email: string) => void
   createTrip: (event: FormEvent<HTMLFormElement>) => void
+  destination: string
+  eventStartAndEndDates: DateRange | undefined
 }
-export function ConfirmTripModal({ 
-  closeConfirmTripModal, 
+export function ConfirmTripModal({
+  closeConfirmTripModal,
   createTrip,
   setOwnerName,
-  setOwnerEmail
+  setOwnerEmail,
+  destination,
+  eventStartAndEndDates
 }: ConfirmTripModalProps) {
+
+  if(!eventStartAndEndDates?.from) {
+    return;
+  }
+
+  if(!eventStartAndEndDates.to) {
+    return;
+  }
+
   return (
     <div className="fixed inset-0 bg-black/60 flex items-center justify-center">
       <div className="w-[640px] rounded-xl py-5 px-6 shadow-shape bg-zinc-900 space-y-5">
@@ -25,7 +41,18 @@ export function ConfirmTripModal({
             </button>
           </div>
           <p className="text-left text-sm text-zinc-400">
-            Para concluir a criação da viagem para <span className="text-zinc-100 font-semibold">Florianópolis, Brasil</span> nas datas de <span className="text-zinc-100 font-semibold">16 a 27 de Agosto de 2024</span> preencha seus dados abaixo:
+            Para concluir a criação da viagem para 
+            <span className="text-zinc-100 font-semibold">
+            &nbsp;{destination} &nbsp;
+            </span> 
+            nas datas de 
+            <span className="text-zinc-100 font-semibold"> {eventStartAndEndDates
+              ? `De 
+              ${format(eventStartAndEndDates.from, "dd 'a'", { locale: ptBR })}
+              ${format(eventStartAndEndDates.to, "dd 'de' MMMM 'de' yyyy", { locale: ptBR })}` : ''}
+              &nbsp;
+            </span> 
+            preencha seus dados abaixo:
           </p>
         </div>
 
