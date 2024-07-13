@@ -19,9 +19,7 @@ export function CreateTripPage() {
 
   const navigate = useNavigate();
 
-  const [emailsToInvite, setEmailsToInvite] = useState([
-    'hudsonholanda55@gmail.com'
-  ]);
+  const [emailsToInvite, setEmailsToInvite] = useState<string[]>([]);
 
   function openGuestsInput() {
     setIsGuestsInputOpen(true);
@@ -145,6 +143,8 @@ export function CreateTripPage() {
             createTrip={createTrip} 
             setOwnerName={setOwnerName}
             setOwnerEmail={setOwnerEmail}
+            destination={destination}
+            eventStartAndEndDates={eventStartAndEndDates}
           />
         )}
         <p className="text-sm text-zinc-500">
