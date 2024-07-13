@@ -15,7 +15,7 @@
 [![Forks](https://img.shields.io/github/forks/lzhudson/plann.er?color=00B37E&style=flat-square)](https://github.com/lzhudson/plann.er/network/members)
 [![Contributors](https://img.shields.io/github/contributors/lzhudson/plann.er?color=00B37E&style=flat-square)](https://github.com/lzhudson/plann.er/graphs/contributors)
 
-* [Overview](#memorando-overview)
+* [Overview](#memo-overview)
 * [Features](#rocket-features)
 * [Installation](#construction_worker-installation)
 * [Found a bug? Missing a specific feature?](#bug-issues)
